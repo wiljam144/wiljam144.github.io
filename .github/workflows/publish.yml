@@ -21,6 +21,9 @@ jobs:
       - name: Build the Site
         run: ./build.sh
 
+      - name: prevent jekyll
+        run: touch public/.nojekyll
+
       - name: Copy static files
         run: cp -r static public/static
 
