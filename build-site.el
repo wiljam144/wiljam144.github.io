@@ -20,10 +20,10 @@
 (setq org-html-validation-link nil            ;; Don't show validation link
       org-html-head-include-scripts nil       ;; Use our own scripts
       org-html-head-include-default-style nil ;; Use our own styles
-      org-html-head "<link rel=\"stylesheet\" href=\"../static/style.css\" />
-                    <script src=\"../static/main.js\" defer></script>
-                    <script src=\"../static/highlight.min.js\" defer></script>
-                    <link rel=\"stylesheet\" href=\"../static/tokyo-night-dark.min.css\" />
+      org-html-head "<link rel=\"stylesheet\" href=\"static/style.css\" />
+                    <script src=\"static/main.js\" defer></script>
+                    <script src=\"static/highlight.min.js\" defer></script>
+                    <link rel=\"stylesheet\" href=\"static/tokyo-night-dark.min.css\" />
                     <link rel=\"stylesheet\" href=\"https://cdn.simplecss.org/simple.min.css\" />")
 
 ;; Define the publishing project
