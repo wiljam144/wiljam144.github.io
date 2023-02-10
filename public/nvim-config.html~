@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Configuring Neovim for Competetive Programming</title>
+<meta name="author" content="Wiljam" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="../static/style.css" />
+                    <script src="../static/main.js" defer></script>
+                    <script src="../static/highlight.min.js" defer></script>
+                    <link rel="stylesheet" href="../static/tokyo-night-dark.min.css" />
+                    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href=""> UP </a>
+ |
+ <a accesskey="H" href="/"> HOME </a>
+</div><div id="content" class="content">
+<h1 class="title">Configuring Neovim for Competetive Programming</h1>
+
+<div id="outline-container-orgb2c8e89" class="outline-2">
+<h2 id="orgb2c8e89">Overview</h2>
+<div class="outline-text-2" id="text-orgb2c8e89">
+<p>
+In this article I'm going to show you how to configure Neovim for competetive programming.
+It will be a really extensible config that you can build upon, It will use Treesitter for
+syntax highlighting and built-in neovim LSP for autocompletion so adding support for other languages
+(this guide is going to use only C/C++ and python since they are the most common languges used for competetive programming)
+will be really easy. (Also this article is more of a documentation to my current neovim config rather than actual article)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6bfe414" class="outline-2">
+<h2 id="org6bfe414">Improving defaults</h2>
+<div class="outline-text-2" id="text-org6bfe414">
+<p>
+Neovim has some really historic defaults that are a heritage from vim. So we're going to fix it.
+To start off, create a <code>init.lua</code> file inside <code>~/.config/nvim/.</code> and paste this snippet of code in it.
+Comments in the code will explain what it does.
+</p>
+<div class="org-src-container">
+<pre class="src src-lua">--enable gui colors display
+vim.o.termguicolors = true 
+--set statusline to be global (one for every buffer) set to 2 to make statusline local to every buffer
+vim.o.laststatus = 3 
+
+--turn on syntax highlighting
+vim.cmd("syntax enable")
+
+--turn on relative numbers (useful for motions)
+vim.wo.relativenumber = true
+--make the line number of line you're currently in absolute instead of 0
+vim.wo.number = true
+
+--turn on indenting based off filetype
+vim.cmd("filetype plugin indent on")
+--set &lt; &gt; indent shifting to 4 spaces
+vim.bo.shiftwidth = 4
+--set number of spaces that TAB counts as
+vim.bo.tabstop = 4
+--use spaces when TAB is pressed
+vim.bo.expandtab = true
+
+--turn off swap files
+vim.opt.swapfile = false
+
+--remap leader to SPACE
+vim.g.mapleader = " "
+</pre>
+</div>
+
+<p>
+Now for some explanations that comments didn't make. First of all what is a vim global? Well it's a way
+to access neovim variables from scripts, the .wo .o .g .opt and .bo are scope, to know witch scope variable uses
+type command: <code>:h 'variable'</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgefa23d5" class="outline-2">
+<h2 id="orgefa23d5">Keybindings</h2>
+<div class="outline-text-2" id="text-orgefa23d5">
+<p>
+Keybindings are extremely personal so I'm not going to give you any, rather I'm going to tell you how
+to create your own keybindings with a popular example.
+</p>
+<div class="org-src-container">
+<pre class="src src-lua">--create an alias for function name 
+local map = vim.api.nvim_set_keymap
+
+--this is the most common form of keybind and the only one that i use
+--the "n" at the start tells vim in which mode the keybinding is active in this case normal
+--the second argument is a string of our keybinding in this case Alt-e
+--the third is the sequence of keystrokes to execute in this case the command "&lt;CR&gt;" at the end
+--is the enter key, the last argument is a table with options, first is no remap option and second is silent option
+--that tells vim to not give any text in command buffer
+map("n", "&lt;A-e&gt;", ":NeoTreeFocusToggle&lt;CR&gt;", {nnoremap = true, silent = true})
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org93a26ae" class="outline-2">
+<h2 id="org93a26ae">PLUGINS</h2>
+<div class="outline-text-2" id="text-org93a26ae">
+<p>
+Now is the most important part of our config: plugins, we are going to use lazy.nvim package manager for that
+</p>
+<div class="org-src-container">
+<pre class="src src-lua">--bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+	"git",
+	"clone",
+	"--filter=blob:none",
+	"https://github.com/folke/lazy.nvim.git",
+	"--branch=stable",
+	lazypath,
+    })
+end
+vim.opt.rtp:prepend(lazypath)
+
+--now the actual plugins
+require("lazy").setup({
+    --some nice colorscheme
+    {"folke/tokyonight.nvim",
+	lazy = false, -- disable lazy loading for this one
+	priority = 1000, -- set it to extremely high priority
+	config = function()
+	    vim.cmd("colorscheme tokyonight-night")
+	end
+    },
+    --statusline
+    "nvim-lualine/lualine.nvim",
+
+    --now some QOL improvements
+    "windwp/nvim-autopairs", -- automatic closing of () [] "" and {}
+    "tpope/vim-sleuth", -- automatically detect indentation style of file and use it
+    "lukas-reineke/indent-blankline.nvim", -- add indentation level lines
+
+    --file explorer
+    {"nvim-neo-tree/neo-tree.nvim",
+	dependencies = {
+	    "nvim-lua/plenary.nvim",
+	    "kyazdani42/nvim-web-devicons",
+	    "MunifTanjim/nui.nvim",
+	}
+    },
+
+    --LSP &amp; syntax highlighting
+    "nvim-treesitter/nvim-treesitter", -- syntax highlighting engine
+    "neovim/nvim-lspconfig", -- official LSP plugin
+    "onsails/lspkind.nvim", -- vs-code pictograms for autocompletion
+    "williamboman/mason.nvim", -- installer for LSP servers
+    "williamboman/mason-lspconfig.nvim",
+
+    "hrsh7th/cmp-nvim-lsp", -- autocompletion
+    "hrsh7th/cmp-buffer", -- extensions to CMP providing additionals features
+    "hrsh7th/cmp-path",
+    "hrsh7th/nvim-cmp",
+
+    "dcampos/nvim-snippy", -- snippets
+    "dcampos/cmp-snippy",
+
+    "folke/trouble.nvim", -- display all the errors in a nice window at the bottom
+})
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2c02b96" class="outline-2">
+<h2 id="org2c02b96">Plugin configuration</h2>
+<div class="outline-text-2" id="text-org2c02b96">
+<p>
+Now that Lazy.nvim downloaded plugins for us, we need to make them load and configure them
+</p>
+<div class="org-src-container">
+<pre class="src src-lua">require("lualine").setup()
+require("nvim-autopairs").setup({map_cr = true})
+require("indent_blankline").setup()
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org328a12d" class="outline-2">
+<h2 id="org328a12d">LSP and Tresitter configuration</h2>
+<div class="outline-text-2" id="text-org328a12d">
+<p>
+This is probably going to be the hardest part, we are going to configure nvim-cmp (note that this snippet is directly taken from cmp github page)
+</p>
+<div class="org-src-container">
+<pre class="src src-lua">local cmp = require("cmp")
+
+vim.cmd("set completeopt=menu,menuone,noselect")
+
+local lspkind = require("lspkind")
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      require("snippy").expand_snippet(args.body)
+    end
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['&lt;C-b&gt;'] = cmp.mapping.scroll_docs(-4),
+    ['&lt;C-f&gt;'] = cmp.mapping.scroll_docs(4),
+    ['&lt;C-Space&gt;'] = cmp.mapping.complete(),
+    ['&lt;C-e&gt;'] = cmp.mapping.abort(),
+    ['&lt;Tab&gt;'] = cmp.mapping.select_next_item(),
+    ['&lt;CR&gt;'] = cmp.mapping.confirm({ select = true }),
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+  },
+  {
+    { name = 'buffer' },
+  }),
+  formatting = {
+    format = lspkind.cmp_format()
+  }
+})
+
+vim.diagnostic.config({
+    signs = false -- disable signs on the numberline and use only squiggles
+})
+
+--I used function instead of calling every language server because it makes it extremely easy
+--to add new servers, you just need to add the name to the table eg. "rust_analyzer"
+local lsp_servers = {"clangd", "pyright"}
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+for lsp_servers_count = 1, #lsp_servers do
+  require("lspconfig")[lsp_servers[lsp_servers_count]].setup({
+    capabilities = capabilities
+  })
+end
+</pre>
+</div>
+<p>
+Next comes the syntax highlighting for which we will use Treesitter.
+</p>
+<div class="org-src-container">
+<pre class="src src-lua">require("nvim-treesitter.configs").setup {
+  ensure_installed = { "c", "cpp", "python"}, -- if you want to add other languages just add them to this table
+  highlight = {
+    enable = true
+  }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfe7fb04" class="outline-2">
+<h2 id="orgfe7fb04">Custom Commands for CP</h2>
+<div class="outline-text-2" id="text-orgfe7fb04">
+<p>
+Last but not least, we are going to configure some functions to make for example building the C++ easier
+</p>
+<div class="org-src-container">
+<pre class="src src-lua">function CompileCpp()
+    local buffer = vim.api.nvim_buf_get_name(0)
+    vim.fn.system({
+	"g++",
+	buffer,
+	"-o",
+	buffer:sub(0, -5),
+	"-Wall",
+	"-Wpedantic",
+	"-Wextra",
+	"-O2",
+	"--std=c++14"
+    })
+end
+-- associate lua command with actual vim command
+vim.cmd("command! CompileCpp lua CompileCpp()")
+
+function RunCpp()
+  local buffer = vim.api.nvim_buf_get_name(0)
+  -- can't use vim.fn.system() because it does not show output
+  vim.cmd("!" .. buffer:sub(0, -5))
+end
+vim.cmd("command! RunCpp lua RunCpp()")
+
+-- WHY DOES MY SCHOOL USE IT FFS
+-- (use any online judge and browser that you want)
+vim.cmd("command! Satori !firefox satori.tcs.uj.edu.pl &amp;")
+
+-- simple CP template for C++
+function CPTemplate()
+  vim.api.nvim_buf_set_lines(0, 0, 0, false, {
+    "#include &lt;bits/stdc++.h&gt;",
+    "using namespace std;",
+    "",
+    "typedef long long ll;",
+    "",
+    "int main() {",
+    "    ios_base::sync_with_stdio(false);",
+    "    cin.tie(nullptr);",
+    "    cout.tie(nullptr);",
+    "     ",
+    "     ",
+    "}"
+  })
+  vim.api.nvim_win_set_cursor(0, {11, 5})
+end
+
+vim.cmd("command! CPTemplate lua CPTemplate()")
+</pre>
+</div>
+<p>
+Now you just got to type <code>:CompileCpp</code> and your c++ code will get compiled with the same name as your <code>.cpp</code> file but
+without the extension then use <code>:RunCPP</code> to run this executable and finally <code>:&lt;online judge name&gt;</code> to open your online
+judge. When you are creating new file you can use <code>:CPTemplate</code> and the file will get automatically filled with this boilerplate
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga66407f" class="outline-2">
+<h2 id="orga66407f">Conclusion</h2>
+<div class="outline-text-2" id="text-orga66407f">
+<p>
+In this article I have shown you how to configure neovim for competetive programming, and I hope it was helpfull!
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 02.10.2023</p>
+<p class="author">Author: Wiljam</p>
+</div>
+</body>
+</html>
