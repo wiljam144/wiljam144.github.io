@@ -1,2 +1,0 @@
-#+title: Blog Posts
-#+author: Wiljam
