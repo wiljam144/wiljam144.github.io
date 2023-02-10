@@ -21,10 +21,12 @@ jobs:
       - name: Build the Site
         run: ./build.sh
 
+      - name: Copy static files
+        run: cp -r static public/static
+
       - name: Publish generated content to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           folder: public
-          folder: static
