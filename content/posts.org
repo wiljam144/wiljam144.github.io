@@ -2,6 +2,10 @@
 #+author: Wiljam
 
 *** 11.02.2023
+I think that creating static websites like blogs in pure text formats, like org-mode or Markdown creates better writing expierence
+than HTML. Also watching circles spin and build tasks executing in GitHub actions is extremely satysfying.
+
+*** 10.02.2023
 So, today I wrote my first article and I can already say a few things: writing is hard, especially if it's not your first langauge.
 Second thing I noticed is that I overuse comments to describe code, I think more text would do a better job. Today is the day I also
 created GitHub pages site, and creating the deploy scripts was really painful, GitHub should document their things better. Today was a great day.
