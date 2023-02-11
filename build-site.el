@@ -14,7 +14,10 @@
 (setq org-html-validation-link nil      
       org-html-head-include-scripts nil 
       org-html-head-include-default-style nil
-      org-html-head "<script src=\"wiljam144.github.io/main.js\" defer></script>
+      org-html-head "<meta http-equiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\" />
+                    <meta http-equiv=\"Pragma\" content=\"no-cache\" />
+                    <meta http-equiv=\"Expires\" content=\"-1\" />
+                    <script src=\"wiljam144.github.io/main.js\" defer></script>
                     <script src=\"wiljam144.github.io/highlight.min.js\" defer></script>
                     <link rel=\"stylesheet\" href=\"wiljam144.github.io/tokyo-night-dark.min.css\" />
                     <link rel=\"stylesheet\" href=\"https://cdn.simplecss.org/simple.min.css\" />
