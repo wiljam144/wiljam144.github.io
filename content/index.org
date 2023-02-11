@@ -10,4 +10,4 @@ Apart from that I'm an old-tech enthusiast.
 * [[file:posts.org][Blog Posts]]
 
 * Articles
-- [[file:nvim-config.org][Configuring Neovim for Competetive Programming]]
+- [[file:articles/nvim-config.org][Configuring Neovim for Competetive Programming]]

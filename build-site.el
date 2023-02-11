@@ -14,11 +14,11 @@
 (setq org-html-validation-link nil      
       org-html-head-include-scripts nil 
       org-html-head-include-default-style nil
-      org-html-head "<script src=\"static/main.js\" defer></script>
-                    <script src=\"static/highlight.min.js\" defer></script>
-                    <link rel=\"stylesheet\" href=\"static/tokyo-night-dark.min.css\" />
+      org-html-head "<script src=\"wiljam144.github.io/main.js\" defer></script>
+                    <script src=\"wiljam144.github.io/highlight.min.js\" defer></script>
+                    <link rel=\"stylesheet\" href=\"wiljam144.github.io/tokyo-night-dark.min.css\" />
                     <link rel=\"stylesheet\" href=\"https://cdn.simplecss.org/simple.min.css\" />
-                    <link rel=\"stylesheet\" href=\"static/style.css\" />")
+                    <link rel=\"stylesheet\" href=\"wiljam144.github.io/style.css\" />")
 
 (setq org-publish-project-alist
       (list
