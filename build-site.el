@@ -17,11 +17,11 @@
       org-html-head "<meta http-equiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\" />
                     <meta http-equiv=\"Pragma\" content=\"no-cache\" />
                     <meta http-equiv=\"Expires\" content=\"-1\" />
-                    <script src=\"wiljam144.github.io/main.js\" defer></script>
-                    <script src=\"wiljam144.github.io/highlight.min.js\" defer></script>
-                    <link rel=\"stylesheet\" href=\"wiljam144.github.io/tokyo-night-dark.min.css\" />
+                    <script src=\"/static/main.js\" defer></script>
+                    <script src=\"/static/highlight.min.js\" defer></script>
+                    <link rel=\"stylesheet\" href=\"/static/tokyo-night-dark.min.css\" />
                     <link rel=\"stylesheet\" href=\"https://cdn.simplecss.org/simple.min.css\" />
-                    <link rel=\"stylesheet\" href=\"wiljam144.github.io/style.css\" />")
+                    <link rel=\"stylesheet\" href=\"/static/style.css\" />")
 
 (setq org-publish-project-alist
       (list
