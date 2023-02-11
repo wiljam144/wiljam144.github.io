@@ -9,12 +9,3 @@ document.addEventListener('DOMContentLoaded', (_event) => {
 });
 
 document.getElementById("org-div-home-and-up").innerHTML = "<a accesskey=\"H\" href=\"/\"> HOME </a>"
-
-//let elements = document.getElementsByClassName("src");
-//for (let i = 0; i < elements.length; i++) {
-//  let el = elements[i];
-//
-//  if (el.className.includes("src-lua")) {
-//    el.classList.add("language-lua");
-//  }
-//}
