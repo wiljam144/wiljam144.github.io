@@ -1,8 +1,8 @@
-#+title: Wiljam Blog
+#+title:
 
-* Overview
-Hi, I'm Wiljam (it's a pseudonym)
-I'm a teenager, interested in low level and embedded software design,
+* Hi, I'm Wiljam
+(not my real name).
+I'm a student from Poland, interested in low level and embedded software design,
 programming language design, theoretical computer science and competetive programming.
 Currently I'm studying in the best school in my country.
 Apart from that I'm an old-tech enthusiast.
