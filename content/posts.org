@@ -1,6 +1,9 @@
 #+title: Blog Posts
 #+author: Wiljam
 
+*** 13.02.2023
+I'm thinking about redesigning this whole site, maybe in some retro-tech style. We'll see.
+
 *** 11.02.2023
 I think that creating static websites like blogs in pure text formats, like org-mode or Markdown creates better writing expierence
 than HTML. Also watching circles spin and build tasks executing in GitHub actions is extremely satysfying.

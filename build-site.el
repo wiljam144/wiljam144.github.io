@@ -14,14 +14,15 @@
 (setq org-html-validation-link nil      
       org-html-head-include-scripts nil 
       org-html-head-include-default-style nil
-      org-html-head "<meta http-equiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\" />
-                    <meta http-equiv=\"Pragma\" content=\"no-cache\" />
-                    <meta http-equiv=\"Expires\" content=\"-1\" />
-                    <script src=\"/static/main.js\" defer></script>
-                    <script src=\"/static/highlight.min.js\" defer></script>
-                    <link rel=\"stylesheet\" href=\"/static/tokyo-night-dark.min.css\" />
-                    <link rel=\"stylesheet\" href=\"https://cdn.simplecss.org/simple.min.css\" />
-                    <link rel=\"stylesheet\" href=\"/static/style.css\" />")
+      org-html-head "
+<meta http-equiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\" />
+<meta http-equiv=\"Pragma\" content=\"no-cache\" />
+<meta http-equiv=\"Expires\" content=\"-1\" />
+<script src=\"/static/main.js\" defer></script>
+<script src=\"/static/highlight.min.js\" defer></script>
+<link rel=\"stylesheet\" href=\"/static/tokyo-night-dark.min.css\" />
+<link rel=\"stylesheet\" href=\"https://cdn.simplecss.org/simple.min.css\" />
+<link rel=\"stylesheet\" href=\"/static/style.css\" />")
 
 (setq org-publish-project-alist
       (list
