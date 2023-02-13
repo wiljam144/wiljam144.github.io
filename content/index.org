@@ -1,13 +1,12 @@
-#+title:
+#+title: Hi, I'm Wiljam
 
-* Hi, I'm Wiljam
 (not my real name).
 I'm a student from Poland, interested in low level and embedded software design,
 programming language design, theoretical computer science and competetive programming.
 Currently I'm studying in the best school in my country.
 Apart from that I'm an old-tech enthusiast.
 
-* [[file:posts.org][Blog Posts]]
-
-* Articles
+* Links
+** [[file:posts.org][Blog Posts]]
+** Articles
 - [[file:articles/nvim-config.org][Configuring Neovim for Competetive Programming]]
