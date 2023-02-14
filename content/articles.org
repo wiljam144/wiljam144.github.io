@@ -1,4 +1,5 @@
 #+title: Articles
+#+include: "../include/header.org"
 
 Here are links to articles I've written:
 - [[/articles/nvim-config.org][Configuring Neovim for Competetive Programming]]
