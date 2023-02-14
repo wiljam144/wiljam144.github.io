@@ -1,12 +1,7 @@
-#+title: Hi, I'm Wiljam
+#+title: Hi, I'm Wiljam144
+#+include: "../include/header.org"
 
-(not my real name).
+Welcome to my website.
 I'm a student from Poland, interested in low level and embedded software design,
 programming language design, theoretical computer science and competetive programming.
 Currently I'm studying in the best school in my country.
-Apart from that I'm an old-tech enthusiast.
-
-* Links
-** [[file:posts.org][Blog Posts]]
-** Articles
-- [[file:articles/nvim-config.org][Configuring Neovim for Competetive Programming]]

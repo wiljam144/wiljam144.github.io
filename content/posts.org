@@ -1,5 +1,6 @@
 #+title: Blog Posts
 #+author: Wiljam
+#+include: "../include/header.org"
 
 *** 13.02.2023
 I'm thinking about redesigning this whole site, maybe in some retro-tech style. We'll see.

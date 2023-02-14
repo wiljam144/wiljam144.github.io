@@ -1,0 +1,10 @@
+#+description: Header
+
+#+begin_export html
+<div class="header">
+  <span class="header-menu"><a href="/">Home</a></span>
+  <span class="header-menu"><a href="/articles.html">Articles</a></span>
+  <span class="header-menu"><a href="/posts.html">Blog</a></span>
+  <span class="header-menu"><a href="/contact.html">Contact</a></span>
+</div>
+#+end_export

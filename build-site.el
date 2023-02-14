@@ -20,8 +20,7 @@
 <meta http-equiv=\"Expires\" content=\"-1\" />
 <script src=\"/static/main.js\" defer></script>
 <script src=\"/static/highlight.min.js\" defer></script>
-<link rel=\"stylesheet\" href=\"/static/tokyo-night-dark.min.css\" />
-<link rel=\"stylesheet\" href=\"https://cdn.simplecss.org/simple.min.css\" />
+<link rel=\"stylesheet\" href=\"/static/gruvbox-dark-medium.min.css\" />
 <link rel=\"stylesheet\" href=\"/static/style.css\" />")
 
 (setq org-publish-project-alist
@@ -34,7 +33,6 @@
              :with-author t
              :with-creator nil
              :with-toc nil 
-             :html-link-home "/"
              :section-numbers nil
              :time-stamp-file nil)))
 

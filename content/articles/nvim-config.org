@@ -1,3 +1,4 @@
+#+include: "../../include/header.org"
 #+title: Configuring Neovim for Competetive Programming
 #+author: Wiljam
 #+date: 02.10.2023
