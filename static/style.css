@@ -1,4 +1,136 @@
 :root {
-  --bg: #0e0f15;
-  --text: #c0caf5;
+  --back-bg: #81a3bf;
+  --bg: #c5c9c7;
+  --text: #1D1E20;
+  --border: #666666;
+
+  --width: 700px;
+  --link: #a35353;
+}
+
+@font-face {
+  font-family: FiraCodeR;
+  src: url("FiraCode-Regular.ttf");
+}
+
+@font-face {
+  font-family: FiraCodeB;
+  src: url("FiraCode-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: Hack;
+  src: url("Hack-Regular.ttf");
+}
+
+html {
+  background-color: var(--back-bg);
+  color: var(--text);
+
+  font-family: "FiraCodeR";
+  font-size: 15px;
+  text-align: justify;
+  text-justift: inter-word;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  width: var(--width);
+  padding: 20px;
+
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+
+  background-color: var(--bg);
+  outline: 1px solid var(--border);
+  outline-offset: -10px;
+  box-shadow: 14px 11px var(--border);
+
+  text-align: center;
+}
+
+.header span {
+  display: inline-block;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+#content {
+  width: var(--width);
+
+  margin-top: 90px;
+  margin-right: auto;
+  margin-left: auto;
+
+  outline: 1px solid var(--border);
+  outline-offset: -10px;
+  box-shadow: 14px 11px var(--border);
+
+  padding: 40px;
+
+  background-color: var(--bg);
+}
+
+#postamble {
+  width: var(--width);
+
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+
+  outline: 1px solid var(--border);
+  outline-offset: -10px;
+  box-shadow: 14px 11px var(--border);
+
+  padding: 20px;
+
+  background-color: var(--bg);
+}
+
+h1 {
+  text-align: center;
+
+  font-family: FiraCodeB;
+}
+
+p code {
+  color: #855050;
+  background-color: #a3535364;
+}
+
+.src {
+  padding: 10px;
+  border: 0px solid var(--border);
+  border-radius: 5px;
+
+  overflow: scroll;
+
+  font-family: Hack;
+}
+
+a:link {
+  text-decoration: underline;
+  color: var(--link);
+}
+
+a:visited {
+  text-decoration: underline;
+  color: var(--link);
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--bg);
+  background-color: var(--link);
+}
+
+a:active {
+  text-decoration: none;
+  color: var(--bg);
+  background-color: var(--link);
 }

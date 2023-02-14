@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', (_event) => {
   document.querySelectorAll('.src').forEach((el) => {
+    // sometimes hljs detected lua as visual basic
+    // so to prevent that:
     if (el.className.includes("src-lua")) {
       el.classList.add("language-lua");
     }
@@ -7,5 +9,3 @@ document.addEventListener('DOMContentLoaded', (_event) => {
     hljs.highlightElement(el);
   });
 });
-
-document.getElementById("org-div-home-and-up").innerHTML = "<a accesskey=\"H\" href=\"/\"> HOME </a>"
