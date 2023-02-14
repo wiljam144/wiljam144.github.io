@@ -2,6 +2,9 @@
 #+author: Wiljam
 #+include: "../include/header.org"
 
+*** 14.02.2023
+The site has been restyled, and it now looks like a ncurses TUI!
+
 *** 13.02.2023
 I'm thinking about redesigning this whole site, maybe in some retro-tech style. We'll see.
 
