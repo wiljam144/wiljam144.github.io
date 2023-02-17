@@ -13,14 +13,14 @@ document.querySelector("h1").onmouseover = event => {
       .split("")
       .map((letter, index) => {
         if(index < iteration) {
-          return event.target.dataset.value[index];
+          return origText[index];
         }
       
         return letters[Math.floor(Math.random() * 52)]
       })
       .join("");
     
-    if(iteration >= event.target.dataset.value.length){ 
+    if(iteration >= origText.length){ 
       clearInterval(interval);
     }
     
