@@ -1,11 +1,11 @@
 :root {
-  --back-bg: #81a3bf;
-  --bg: #c5c9c7;
-  --text: #1D1E20;
+  --back-bg: #1717b2;
+  --bg: #b2b2b2;
+  --text: #000000;
   --border: #666666;
 
   --width: 700px;
-  --link: #a35353;
+  --link: #1717b2;
 }
 
 @font-face {
