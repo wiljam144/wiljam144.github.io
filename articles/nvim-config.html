@@ -29,9 +29,9 @@
   <span class="header-menu"><a href="/contact.html">Contact</a></span>
 </div>
 
-<div id="outline-container-orgfe002cc" class="outline-2">
-<h2 id="orgfe002cc">Overview</h2>
-<div class="outline-text-2" id="text-orgfe002cc">
+<div id="outline-container-org8c3fb93" class="outline-2">
+<h2 id="org8c3fb93">Overview</h2>
+<div class="outline-text-2" id="text-org8c3fb93">
 <p>
 In this article I'm going to show you how to configure Neovim for competetive programming.
 It will be a really extensible config that you can build upon, It will use Treesitter for
@@ -42,9 +42,9 @@ will be really easy. (Also this article is more of a documentation to my current
 </div>
 </div>
 
-<div id="outline-container-orgbf05bb9" class="outline-2">
-<h2 id="orgbf05bb9">Improving defaults</h2>
-<div class="outline-text-2" id="text-orgbf05bb9">
+<div id="outline-container-orgf4e1131" class="outline-2">
+<h2 id="orgf4e1131">Improving defaults</h2>
+<div class="outline-text-2" id="text-orgf4e1131">
 <p>
 Neovim has some really historic defaults that are a heritage from vim. So we're going to fix it.
 To start off, create a <code>init.lua</code> file inside <code>~/.config/nvim/.</code> and paste this snippet of code in it.
@@ -89,9 +89,9 @@ type command: <code>:h 'variable'</code>.
 </div>
 </div>
 
-<div id="outline-container-orgb41875c" class="outline-2">
-<h2 id="orgb41875c">Keybindings</h2>
-<div class="outline-text-2" id="text-orgb41875c">
+<div id="outline-container-org8fe6f53" class="outline-2">
+<h2 id="org8fe6f53">Keybindings</h2>
+<div class="outline-text-2" id="text-org8fe6f53">
 <p>
 Keybindings are extremely personal so I'm not going to give you any, rather I'm going to tell you how
 to create your own keybindings with a popular example.
@@ -112,9 +112,9 @@ map("n", "&lt;A-e&gt;", ":NeoTreeFocusToggle&lt;CR&gt;", {nnoremap = true, silen
 </div>
 </div>
 
-<div id="outline-container-orgd4b74e6" class="outline-2">
-<h2 id="orgd4b74e6">PLUGINS</h2>
-<div class="outline-text-2" id="text-orgd4b74e6">
+<div id="outline-container-org05dd17b" class="outline-2">
+<h2 id="org05dd17b">PLUGINS</h2>
+<div class="outline-text-2" id="text-org05dd17b">
 <p>
 Now is the most important part of our config: plugins, we are going to use lazy.nvim package manager for that
 </p>
@@ -182,9 +182,9 @@ require("lazy").setup({
 </div>
 </div>
 
-<div id="outline-container-orgaa94cb2" class="outline-2">
-<h2 id="orgaa94cb2">Plugin configuration</h2>
-<div class="outline-text-2" id="text-orgaa94cb2">
+<div id="outline-container-orge0b5da7" class="outline-2">
+<h2 id="orge0b5da7">Plugin configuration</h2>
+<div class="outline-text-2" id="text-orge0b5da7">
 <p>
 Now that Lazy.nvim downloaded plugins for us, we need to make them load and configure them
 </p>
@@ -197,9 +197,9 @@ require("indent_blankline").setup()
 </div>
 </div>
 
-<div id="outline-container-orgbd0bfc3" class="outline-2">
-<h2 id="orgbd0bfc3">LSP and Tresitter configuration</h2>
-<div class="outline-text-2" id="text-orgbd0bfc3">
+<div id="outline-container-orgfd54753" class="outline-2">
+<h2 id="orgfd54753">LSP and Tresitter configuration</h2>
+<div class="outline-text-2" id="text-orgfd54753">
 <p>
 This is probably going to be the hardest part, we are going to configure nvim-cmp (note that this snippet is directly taken from cmp github page)
 </p>
@@ -264,9 +264,9 @@ Next comes the syntax highlighting for which we will use Treesitter.
 </div>
 </div>
 
-<div id="outline-container-org0f17f6f" class="outline-2">
-<h2 id="org0f17f6f">Custom Commands for CP</h2>
-<div class="outline-text-2" id="text-org0f17f6f">
+<div id="outline-container-org80d7573" class="outline-2">
+<h2 id="org80d7573">Custom Commands for CP</h2>
+<div class="outline-text-2" id="text-org80d7573">
 <p>
 Last but not least, we are going to configure some functions to make for example building the C++ easier
 </p>
@@ -329,9 +329,9 @@ judge. When you are creating new file you can use <code>:CPTemplate</code> and t
 </div>
 </div>
 
-<div id="outline-container-org4d34fdc" class="outline-2">
-<h2 id="org4d34fdc">Conclusion</h2>
-<div class="outline-text-2" id="text-org4d34fdc">
+<div id="outline-container-orgdfdf72f" class="outline-2">
+<h2 id="orgdfdf72f">Conclusion</h2>
+<div class="outline-text-2" id="text-orgdfdf72f">
 <p>
 In this article I have shown you how to configure neovim for competetive programming, and I hope it was helpfull!
 </p>
