@@ -2,7 +2,7 @@
   --back-bg: #1717b2;
   --bg: #b2b2b2;
   --text: #000000;
-  --border: #666666;
+  --border: #1a1a1a;
 
   --width: 700px;
   --link: #1717b2;
@@ -94,6 +94,8 @@ html {
 
 h1 {
   text-align: center;
+
+  overflow-wrap: break-word;
 
   font-family: FiraCodeB;
 }
