@@ -2,6 +2,9 @@
 #+author: Wiljam
 #+include: "../include/header.org"
 
+*** 18.02.2023
+Emacs is a wonderful tool, mainly because it allows for so much customization (also org-mode is just amazing). I'm at a start of my emacs journey but I'm sure that it will be a long one.
+
 *** 14.02.2023
 The site has been restyled, and it now looks like a ncurses TUI!
 
