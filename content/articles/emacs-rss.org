@@ -1,0 +1,87 @@
+#+title: How to Use Emacs as RSS Reader
+#+date: 2023-02-19
+
+* Introduction
+RSS is a protocol used by many blogs, news sites and web comics. Building you own RSS reader  is immensely useful,
+since it allows you to create a personalized news aggregator. So today I will show you, how you can use build RSS reader with the help of /Emacs/ and /elfeed/.
+
+* Setup
+I'm using [[https://github.com/doomemacs/doomemacs][Doom Emacs]], installing elfeed in it is really easy, you just need to uncomment this line in your =init.el=:
+#+begin_src elisp
+:app
+(rss +org) ;emacs as an RSS reader
+#+end_src
+Now we have enabled elfeed and elfeed-org. We will also need some additional /Quality Of Life/ packages. Add this to =packages.el=
+#+begin_src elisp
+(package! elfeed-goodies)
+(package! elfeed-summary)
+#+end_src
+After that run ~doom sync~ in your terminal, for Doom Emacs to download the necessary packages
+
+*  Fixing Trust Certificates
+For some RSS feeds to work you need to skip trust certificate checking, note that this is *very unsafe* so you probably shouldn't copy this to your config if you don't encounter issues with your feeds.
+#+begin_src elisp
+(setq elfeed-use-curl t)
+(setq elfeed-curl-extra-arguments '("--insecure"))
+#+end_src
+
+* Tweaking Viewing Behaviour
+I prefer to open entries in side-buffer instead of them taking the entire screen when entered. That's why we use ~elfeed-goodies~ package. Also we want to have some keybindings to quickly cycle through entries.
+#+begin_src elisp
+(setq elfeed-goodies/entry-pane-size 0.75)
+(evil-define-key 'normal elfeed-show-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+(evil-define-key 'normal elfeed-searc-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+#+end_src
+Now we can use =J= and =K= to cycle through the entries that will open on the right side and take 3/4 of the frame by default.
+
+* Elfeed-org setup
+The default handling of auto-tagging in elfeed config is really ugly and impractical, that's why we have ~elfeed-org~ package.
+#+begin_src elisp
+(setq rmh-elfeed-org-files (list "~/.doom.d/elfeed.org"))
+(elfeed-org)
+#+end_src
+If you want to have your elfeed feed config in different file change =~/.doom.d/elfeed.og= to something your filepath. Now let's configure our feeds.
+#+begin_src org
+,* Feeds :elfeed:
+,** Security :security:
+,*** http://feeds.feedburner.com/niebezpiecznik/
+#+end_src
+This is just a single feed, to learn more about configuring feeds in ~elfeed-org~ go to [[https://github.com/remyhonig/elfeed-org][Elfeed-org]] GitHub page.
+
+* Elfeed-Summary
+The default page that just displays every article it pulled from feeds is not a problem when you have one feed, but you probably have a lot more of feeds configured, so it becomes pretty unreadeable. That's why we will use ~elfeed-summary~ package.
+#+begin_src elisp
+(setq elfeed-summary-settings
+      '((group (:title . "Security")
+               (:elements
+                (query . security)))))
+#+end_src
+Once again, full configuration guide for ~elfeed-summary~ is too much for the scope of this article. If you want to know more go to [[https://github.com/SqrtMinusOne/elfeed-summary][Elfeed Summary]] GitHub.
+
+* Improving visuals
+The last thing that I would want to do is improve the visuals and reading expierence. We will center the text and disable monospaced font.
+#+begin_src elisp
+(defun enable-visual-fill ()
+  (setq visual-fill-column-width 100
+        visual-fill-column-center-text t)
+  (visual-fill-column-mode t))
+
+(defun elfeed-show-mode-setup ()
+  (enable-visual-fill)
+  (variable-pitch-mode))
+
+(add-hook 'elfeed-show-mode-hook #'elfeed-show-mode-setup)
+#+end_src
+
+* Keybinding
+Last but not least we should set up a keybind that will open our RSS reader.
+#+begin_src elisp
+(map! :leader
+      (:prefix-map ("e" . "elfeed")
+       :desc "Open Elfeed Summary" "s" #'elfeed-summary))
+#+end_src
+Now you can just use =SPC e s= sequence to open ~elfeed~ and use read some news!

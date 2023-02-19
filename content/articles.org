@@ -2,4 +2,5 @@
 #+include: "../include/header.org"
 
 Here are links to articles I've written:
+- [[file:articles/emacs-rss.org][How to Use Emacs as RSS Reader]]
 - [[file:articles/nvim-config.org][Configuring Neovim for Competetive Programming]]
