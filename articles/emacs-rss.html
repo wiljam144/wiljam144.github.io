@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>How to Use Emacs as RSS Reader</title>
+<meta name="generator" content="Org mode" />
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1" />
+<script src="/static/main.js" defer></script>
+<script src="/static/highlight.min.js" defer></script>
+<link rel="stylesheet" href="/static/gruvbox-dark-medium.min.css" />
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+<div id="content">
+<h1 class="title">How to Use Emacs as RSS Reader</h1>
+
+<div id="outline-container-orgf678fd8" class="outline-2">
+<h2 id="orgf678fd8">Introduction</h2>
+<div class="outline-text-2" id="text-orgf678fd8">
+<p>
+RSS is a protocol used by many blogs, news sites and web comics. Building you own RSS reader  is immensely useful,
+since it allows you to create a personalized news aggregator. So today I will show you, how you can use build RSS reader with the help of <i>Emacs</i> and <i>elfeed</i>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf26f320" class="outline-2">
+<h2 id="orgf26f320">Setup</h2>
+<div class="outline-text-2" id="text-orgf26f320">
+<p>
+I'm using <a href="https://github.com/doomemacs/doomemacs">Doom Emacs</a>, installing elfeed in it is really easy, you just need to uncomment this line in your <code>init.el</code>:
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="font-weight: bold;">:app</span>
+(rss +org) <span style="font-weight: bold; font-style: italic;">;</span><span style="font-weight: bold; font-style: italic;">emacs as an RSS reader</span>
+</pre>
+</div>
+<p>
+Now we have enabled elfeed and elfeed-org. We will also need some additional <i>Quality Of Life</i> packages. Add this to <code>packages.el</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(package! elfeed-goodies)
+(package! elfeed-summary)
+</pre>
+</div>
+<p>
+After that run <code>doom sync</code> in your terminal, for Doom Emacs to download the necessary packages
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7a8561f" class="outline-2">
+<h2 id="org7a8561f">Fixing Trust Certificates</h2>
+<div class="outline-text-2" id="text-org7a8561f">
+<p>
+For some RSS feeds to work you need to skip trust certificate checking, note that this is <b>very unsafe</b> so you probably shouldn't copy this to your config if you don't encounter issues with your feeds.
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">setq</span> elfeed-use-curl t)
+(<span style="font-weight: bold;">setq</span> elfeed-curl-extra-arguments '(<span style="font-style: italic;">"--insecure"</span>))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgabc3f14" class="outline-2">
+<h2 id="orgabc3f14">Tweaking Viewing Behaviour</h2>
+<div class="outline-text-2" id="text-orgabc3f14">
+<p>
+I prefer to open entries in side-buffer instead of them taking the entire screen when entered. That's why we use <code>elfeed-goodies</code> package. Also we want to have some keybindings to quickly cycle through entries.
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">setq</span> elfeed-goodies/entry-pane-size 0.75)
+(evil-define-key 'normal elfeed-show-mode-map
+  (kbd <span style="font-style: italic;">"J"</span>) 'elfeed-goodies/split-show-next
+  (kbd <span style="font-style: italic;">"K"</span>) 'elfeed-goodies/split-show-prev)
+(evil-define-key 'normal elfeed-searc-mode-map
+  (kbd <span style="font-style: italic;">"J"</span>) 'elfeed-goodies/split-show-next
+  (kbd <span style="font-style: italic;">"K"</span>) 'elfeed-goodies/split-show-prev)
+</pre>
+</div>
+<p>
+Now we can use <code>J</code> and <code>K</code> to cycle through the entries that will open on the right side and take 3/4 of the frame by default.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgda88ed7" class="outline-2">
+<h2 id="orgda88ed7">Elfeed-org setup</h2>
+<div class="outline-text-2" id="text-orgda88ed7">
+<p>
+The default handling of auto-tagging in elfeed config is really ugly and impractical, that's why we have <code>elfeed-org</code> package.
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">setq</span> rmh-elfeed-org-files (list <span style="font-style: italic;">"~/.doom.d/elfeed.org"</span>))
+(elfeed-org)
+</pre>
+</div>
+<p>
+If you want to have your elfeed feed config in different file change <code>~/.doom.d/elfeed.og</code> to something your filepath. Now let's configure our feeds.
+</p>
+<div class="org-src-container">
+<pre class="src src-org"><span style="font-weight: bold;">* Feeds </span><span style="font-weight: bold;">:elfeed:</span>
+<span style="font-weight: bold; font-style: italic;">** Security </span><span style="font-weight: bold; font-style: italic;">:security:</span>
+<span style="font-weight: bold;">*** </span><span style="text-decoration: underline;"><a href="http://feeds.feedburner.com/niebezpiecznik/">http://feeds.feedburner.com/niebezpiecznik/</a></span>
+</pre>
+</div>
+<p>
+This is just a single feed, to learn more about configuring feeds in <code>elfeed-org</code> go to <a href="https://github.com/remyhonig/elfeed-org">Elfeed-org</a> GitHub page.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org72dab2e" class="outline-2">
+<h2 id="org72dab2e">Elfeed-Summary</h2>
+<div class="outline-text-2" id="text-org72dab2e">
+<p>
+The default page that just displays every article it pulled from feeds is not a problem when you have one feed, but you probably have a lot more of feeds configured, so it becomes pretty unreadeable. That's why we will use <code>elfeed-summary</code> package.
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">setq</span> elfeed-summary-settings
+      '((group (<span style="font-weight: bold;">:title</span> . <span style="font-style: italic;">"Security"</span>)
+               (<span style="font-weight: bold;">:elements</span>
+                (query . security)))))
+</pre>
+</div>
+<p>
+Once again, full configuration guide for <code>elfeed-summary</code> is too much for the scope of this article. If you want to know more go to <a href="https://github.com/SqrtMinusOne/elfeed-summary">Elfeed Summary</a> GitHub.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org022f6d1" class="outline-2">
+<h2 id="org022f6d1">Improving visuals</h2>
+<div class="outline-text-2" id="text-org022f6d1">
+<p>
+The last thing that I would want to do is improve the visuals and reading expierence. We will center the text and disable monospaced font.
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">enable-visual-fill</span> ()
+  (<span style="font-weight: bold;">setq</span> visual-fill-column-width 100
+        visual-fill-column-center-text t)
+  (visual-fill-column-mode t))
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">elfeed-show-mode-setup</span> ()
+  (enable-visual-fill)
+  (variable-pitch-mode))
+
+(add-hook 'elfeed-show-mode-hook #'elfeed-show-mode-setup)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgebc9cc7" class="outline-2">
+<h2 id="orgebc9cc7">Keybinding</h2>
+<div class="outline-text-2" id="text-orgebc9cc7">
+<p>
+Last but not least we should set up a keybind that will open our RSS reader.
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(map! <span style="font-weight: bold;">:leader</span>
+      (<span style="font-weight: bold;">:prefix-map</span> (<span style="font-style: italic;">"e"</span> . <span style="font-style: italic;">"elfeed"</span>)
+       <span style="font-weight: bold;">:desc</span> <span style="font-style: italic;">"Open Elfeed Summary"</span> <span style="font-style: italic;">"s"</span> #'elfeed-summary))
+</pre>
+</div>
+<p>
+Now you can just use <code>SPC e s</code> sequence to open <code>elfeed</code> and use read some news!
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2023-02-19</p>
+</div>
+</body>
+</html>
