@@ -1,11 +1,11 @@
 :root {
-  --back-bg: #1717b2;
-  --bg: #b2b2b2;
-  --text: #000000;
-  --border: #1a1a1a;
+  --back-bg: #1a1b26;
+  --bg: #24283b;
+  --text: #c0caf5;
+  --border: #414868;
 
   --width: 700px;
-  --link: #1717b2;
+  --link: #7dcfff;
 }
 
 @font-face {
@@ -28,7 +28,7 @@ html {
   color: var(--text);
 
   font-family: "FiraCodeR";
-  font-size: 15px;
+  font-size: 16px;
   text-align: justify;
   text-justift: inter-word;
 }
@@ -42,7 +42,7 @@ html {
   width: var(--width);
   padding: 20px;
 
-  margin-top: 10px;
+  margin-top: 15px;
   margin-left: auto;
   margin-right: auto;
 
@@ -63,7 +63,7 @@ html {
 #content {
   width: var(--width);
 
-  margin-top: 90px;
+  margin-top: 115px;
   margin-right: auto;
   margin-left: auto;
 
@@ -79,7 +79,7 @@ html {
 #postamble {
   width: var(--width);
 
-  margin-top: 20px;
+  margin-top: 30px;
   margin-right: auto;
   margin-left: auto;
 
@@ -98,6 +98,12 @@ h1 {
   overflow-wrap: break-word;
 
   font-family: FiraCodeB;
+  color: #f7768e;
+}
+
+h2 {
+  font-family: FiraCodeB;
+  color: #c0caf5;
 }
 
 p code {
