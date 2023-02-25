@@ -20,7 +20,7 @@
 <meta http-equiv=\"Expires\" content=\"-1\" />
 <script src=\"/static/main.js\" defer></script>
 <script src=\"/static/highlight.min.js\" defer></script>
-<link rel=\"stylesheet\" href=\"/static/gruvbox-dark-medium.min.css\" />
+<link rel=\"stylesheet\" href=\"tokyo-night-dark.min.css\" />
 <link rel=\"stylesheet\" href=\"/static/style.css\" />")
 
 (setq org-publish-project-alist
