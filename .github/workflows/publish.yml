@@ -26,9 +26,6 @@ jobs:
       - name: Copy static files
         run: cp -r static public/static
 
-      - name: Copy index file
-        run: cp content/index.html public/index.html
-
       - name: Publish generated content to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:

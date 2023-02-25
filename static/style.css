@@ -1,12 +1,11 @@
 :root {
-  --back-bg: #000000;
-  --bg: #000000;
-  --text: #ffffff;
-  --border: #757575;
-  --shadow: #333333;
+  --back-bg: #1717b2;
+  --bg: #b2b2b2;
+  --text: #000000;
+  --border: #1a1a1a;
 
-  --width: 800px;
-  --link: #3d9bff;
+  --width: 700px;
+  --link: #1717b2;
 }
 
 @font-face {
@@ -29,7 +28,7 @@ html {
   color: var(--text);
 
   font-family: "FiraCodeR";
-  font-size: 16px;
+  font-size: 15px;
   text-align: justify;
   text-justift: inter-word;
 }
@@ -49,7 +48,8 @@ html {
 
   background-color: var(--bg);
   outline: 1px solid var(--border);
-  box-shadow: 14px 11px var(--shadow);
+  outline-offset: -10px;
+  box-shadow: 14px 11px var(--border);
 
   text-align: center;
 }
@@ -63,12 +63,13 @@ html {
 #content {
   width: var(--width);
 
-  margin-top: 100px;
+  margin-top: 90px;
   margin-right: auto;
   margin-left: auto;
 
   outline: 1px solid var(--border);
-  box-shadow: 14px 11px var(--shadow);
+  outline-offset: -10px;
+  box-shadow: 14px 11px var(--border);
 
   padding: 40px;
 
@@ -78,12 +79,13 @@ html {
 #postamble {
   width: var(--width);
 
-  margin-top: 30px;
+  margin-top: 20px;
   margin-right: auto;
   margin-left: auto;
 
   outline: 1px solid var(--border);
-  box-shadow: 14px 11px var(--shadow);
+  outline-offset: -10px;
+  box-shadow: 14px 11px var(--border);
 
   padding: 20px;
 
