@@ -23,15 +23,14 @@
 <h1 class="title">How to Use Emacs as RSS Reader</h1>
 <div class="header">
   <span class="header-menu"><a href="/">Home</a></span>
-  <span class="header-menu"><a href="/about.html">About</a></span>
   <span class="header-menu"><a href="/articles.html">Articles</a></span>
   <span class="header-menu"><a href="/posts.html">Blog</a></span>
   <span class="header-menu"><a href="/contact.html">Contact</a></span>
 </div>
 
-<div id="outline-container-org41e3fd2" class="outline-2">
-<h2 id="org41e3fd2">Introduction</h2>
-<div class="outline-text-2" id="text-org41e3fd2">
+<div id="outline-container-org9c79bb6" class="outline-2">
+<h2 id="org9c79bb6">Introduction</h2>
+<div class="outline-text-2" id="text-org9c79bb6">
 <p>
 RSS is a protocol used by many blogs, news sites and web comics. Building you own RSS reader  is immensely useful,
 since it allows you to create a personalized news aggregator. So today I will show you, how you can use build RSS reader with the help of <i>Emacs</i> and <i>elfeed</i>.
@@ -39,9 +38,9 @@ since it allows you to create a personalized news aggregator. So today I will sh
 </div>
 </div>
 
-<div id="outline-container-org3539ad1" class="outline-2">
-<h2 id="org3539ad1">Setup</h2>
-<div class="outline-text-2" id="text-org3539ad1">
+<div id="outline-container-org885e7f0" class="outline-2">
+<h2 id="org885e7f0">Setup</h2>
+<div class="outline-text-2" id="text-org885e7f0">
 <p>
 I'm using <a href="https://github.com/doomemacs/doomemacs">Doom Emacs</a>, installing elfeed in it is really easy, you just need to uncomment this line in your <code>init.el</code>:
 </p>
@@ -64,9 +63,9 @@ After that run <code>doom sync</code> in your terminal, for Doom Emacs to downlo
 </div>
 </div>
 
-<div id="outline-container-orgff5cd35" class="outline-2">
-<h2 id="orgff5cd35">Fixing Trust Certificates</h2>
-<div class="outline-text-2" id="text-orgff5cd35">
+<div id="outline-container-org318b5b8" class="outline-2">
+<h2 id="org318b5b8">Fixing Trust Certificates</h2>
+<div class="outline-text-2" id="text-org318b5b8">
 <p>
 For some RSS feeds to work you need to skip trust certificate checking, note that this is <b>very unsafe</b> so you probably shouldn't copy this to your config if you don't encounter issues with your feeds.
 </p>
@@ -78,9 +77,9 @@ For some RSS feeds to work you need to skip trust certificate checking, note tha
 </div>
 </div>
 
-<div id="outline-container-org40032d3" class="outline-2">
-<h2 id="org40032d3">Tweaking Viewing Behaviour</h2>
-<div class="outline-text-2" id="text-org40032d3">
+<div id="outline-container-org7e4f5ce" class="outline-2">
+<h2 id="org7e4f5ce">Tweaking Viewing Behaviour</h2>
+<div class="outline-text-2" id="text-org7e4f5ce">
 <p>
 I prefer to open entries in side-buffer instead of them taking the entire screen when entered. That's why we use <code>elfeed-goodies</code> package. Also we want to have some keybindings to quickly cycle through entries.
 </p>
@@ -100,9 +99,9 @@ Now we can use <code>J</code> and <code>K</code> to cycle through the entries th
 </div>
 </div>
 
-<div id="outline-container-orge75cfe0" class="outline-2">
-<h2 id="orge75cfe0">Elfeed-org setup</h2>
-<div class="outline-text-2" id="text-orge75cfe0">
+<div id="outline-container-org3a162fd" class="outline-2">
+<h2 id="org3a162fd">Elfeed-org setup</h2>
+<div class="outline-text-2" id="text-org3a162fd">
 <p>
 The default handling of auto-tagging in elfeed config is really ugly and impractical, that's why we have <code>elfeed-org</code> package.
 </p>
@@ -126,9 +125,9 @@ This is just a single feed, to learn more about configuring feeds in <code>elfee
 </div>
 </div>
 
-<div id="outline-container-org55b7dae" class="outline-2">
-<h2 id="org55b7dae">Elfeed-Summary</h2>
-<div class="outline-text-2" id="text-org55b7dae">
+<div id="outline-container-org7144ad5" class="outline-2">
+<h2 id="org7144ad5">Elfeed-Summary</h2>
+<div class="outline-text-2" id="text-org7144ad5">
 <p>
 The default page that just displays every article it pulled from feeds is not a problem when you have one feed, but you probably have a lot more of feeds configured, so it becomes pretty unreadeable. That's why we will use <code>elfeed-summary</code> package.
 </p>
@@ -145,9 +144,9 @@ Once again, full configuration guide for <code>elfeed-summary</code> is too much
 </div>
 </div>
 
-<div id="outline-container-org618a5f1" class="outline-2">
-<h2 id="org618a5f1">Improving visuals</h2>
-<div class="outline-text-2" id="text-org618a5f1">
+<div id="outline-container-orge668482" class="outline-2">
+<h2 id="orge668482">Improving visuals</h2>
+<div class="outline-text-2" id="text-orge668482">
 <p>
 The last thing that I would want to do is improve the visuals and reading expierence. We will center the text and disable monospaced font.
 </p>
@@ -167,9 +166,9 @@ The last thing that I would want to do is improve the visuals and reading expier
 </div>
 </div>
 
-<div id="outline-container-org734dad0" class="outline-2">
-<h2 id="org734dad0">Keybinding</h2>
-<div class="outline-text-2" id="text-org734dad0">
+<div id="outline-container-org899d7fd" class="outline-2">
+<h2 id="org899d7fd">Keybinding</h2>
+<div class="outline-text-2" id="text-org899d7fd">
 <p>
 Last but not least we should set up a keybind that will open our RSS reader.
 </p>
