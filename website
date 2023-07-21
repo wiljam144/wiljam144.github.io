@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+if [ "$1" = "build" ]; then
+    python3 scripts/build.py
+fi
+
+if [ "$1" = "clean" ]; then
+    python3 scripts/clean.py
+fi
+
+if [ "$1" = "run" ]; then
+    python3 scripts/run.py
+fi
