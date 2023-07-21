@@ -1,5 +1,0 @@
-#!/bin/bash
-
-./website clean
-./website build
-./website run
