@@ -13,9 +13,7 @@ jobs:
         uses: actions/checkout@v1
 
       - name: install python tools
-        run: |
-          sudo apt install python 
-          pip install markdown
+        run: pip install markdown
 
       - name: change script permissions
         run: chmod +x ./cbr ./website

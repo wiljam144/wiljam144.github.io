@@ -1,8 +1,0 @@
-#text.htmx-added {
-    opacity: 0;
-}
-
-#text {
-    opacity: 1;
-    transition: opacity 1s;
-}
