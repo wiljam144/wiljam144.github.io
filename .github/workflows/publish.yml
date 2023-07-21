@@ -27,6 +27,6 @@ jobs:
       - name: Publish files to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           branch: gh-pages
           folder: build
