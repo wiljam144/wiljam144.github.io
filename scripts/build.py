@@ -36,6 +36,9 @@ template = ""
 with open("layouts/base.html", "r") as f:
     template = f.read()
 
+writings_template = ""
+with open("layouts/writing.html", "r") as f:
+    writings_template = f.read()
 
 markdown_filepaths = [y for x in os.walk("./src/") for y in glob(os.path.join(x[0], "*.md"))]
 other_filepaths = get_other_files("./src")
@@ -49,7 +52,10 @@ for filepath in markdown_filepaths:
         text = f.read()
         html = markdown.markdown(text)
 
-        buildtext = template.replace("{{content}}", html)
+        if "writings" in filepath:
+            buildtext = writings_template.replace("{{content}}", html) 
+        else:
+            buildtext = template.replace("{{content}}", html)
 
         create_build_file(filepath, buildtext)
 
