@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WILJAM144</title>
+    <script src="/lib/htmx.min.js"></script>
+    <script src="/js/main.js"></script>
+</head>
+<body>
+    <style>
+        #posts-link.htmx-added {
+            opacity: 0;
+        }
+        #posts-link {
+            opacity: 1;
+            transition: opacity 1s;
+        }
+        #posts-link:hover {
+            cursor: pointer;
+            color: #b3b3b3;
+            transition-duration: 0.3s;
+        }
+
+        #markdown-content.htmx-added {
+            opacity: 0;
+        }
+        #markdown-content {
+            opacity: 1;
+            transition: opacity 1s;
+        }
+
+        #markdown-content h1 {
+            font-size: 22px;
+        }
+    </style>
+    <div id="markdown-content">
+        <h1>2023-07-24</h1>
+<p>I finished making the site, and created proper page for articles.
+Now I'm thinking about making my own markdown version with
+compiler to HTML that would better suit the needs of this website.</p> 
+    </div>
+    <span id="posts-link" hx-get="/html/blog.html" hx-target="#text" hx-swap="innerHTML">Go Back</span><br>
+</body>
+</html>
