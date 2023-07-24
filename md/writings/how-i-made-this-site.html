@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WILJAM144 - Writings</title>
+    <link rel="stylesheet" href="/css/writing.css">
+    <link rel="stylesheet" href="/lib/black-metal-dark-funeral.min.css">
+
+    <script src="/lib/htmx.min.js"></script>
+    <script src="/lib/highlight.min.js"></script>
+
+    <script defer src="/js/writing.js"></script>
+</head>
+<body>
+    <div id="content">
+        <a id="back-button" href="/">Go Back</a>
+        <div id="markdown-content">
+            <p>2023-07-22</p>
+<h1>How I made this site</h1>
+<p>So this version of the website is my third revision of the site.
+You can check the old version of the site <a href="https://wiljam144.github.io/webpage-v2">here</a>.</p>
+<h2>The Problem</h2>
+<p>The major problem was that blog posts and articles were completely detached
+from the website and felt disjoined, I still don't think I solved the issue completely,
+since the articles are still in separate pages, but it should be better.
+Also the last issue with the old version is that it was just ugly.</p>
+<h2>The Stack</h2>
+<p>So I wanted to have a plain-text format for my writings and blog posts, and 
+something html-like to use for other pages. My first thought was jekyll, but
+I decided against it, because I didn't feel it gave me enough control, and I 
+would much rather style my webpage in css than create themes and things like that.
+But there wasn't literally any frameworks or tools that I would be satisfied with,
+and the only logical conclusion was to create my own! Well that may be an exagerration,
+since the whole build system is just a simple python script that copies every file that isn't Markdown,
+and converts the Markdown files into HTML with python's markdown module.
+Maybe someday I will use it as an inspiration for my own static-site generator like jekyll.
+I also decided to use <a href="https://htmx.org/">htmx</a> to give the site that extra bit of interactivity.</p>
+<h2>The Styling</h2>
+<p>I was studying some more advanced topics and concepts about graphs when I decided to
+remake my website. That's why I wanted to have something that looks like a graph.
+I found the <a href="https://vincentgarreau.com/particles.js/">particles.js</a> JS library that
+allowed me to do exactly what I wanted with the background of the website.</p> 
+        </div> 
+    </div>
+</body>
+</html>
