@@ -64,6 +64,21 @@ html, body {
     color: #b3b3b3;
 }
 
+#sidebar a {
+    color: white;
+    text-decoration: none;
+
+    transition-duration: 0.3s;
+}
+
+#sidebar a:visited {
+    color: white;
+}
+
+#sidebar a:hover {
+    color: #b3b3b3;
+}
+
 #main {
     width: 500px;
 
